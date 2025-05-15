@@ -188,7 +188,7 @@ class ScreenBrightness {
   /// (Android only) Code: -10, Message: Unexpected error on activity binding
   /// Unexpected error when getting activity, activity may be null
   @Deprecated(
-      'refactored to resetScreenBrightness (will be remove after version 2.1.0)')
+      'refactored to resetApplicationScreenBrightness (will be remove after version 2.1.0)')
   Future<void> resetScreenBrightness() => resetApplicationScreenBrightness();
 
   /// Reset application screen brightness with (Android) -1 or (iOS)system
@@ -288,4 +288,14 @@ class ScreenBrightness {
   /// (iOS only) implemented in iOS only because only iOS native side does not
   /// having reset method.
   Future<void> setAnimate(bool isAnimate) => _platform.setAnimate(isAnimate);
+
+  /// Return can change system screen brightness
+  ///
+  /// This parameter is useful for user to determinate user can change system
+  /// brightness.
+  ///
+  /// (Android only) implemented in Android only because only Android needs
+  /// permission to change the screen brightness
+  Future<bool> get canChangeSystemBrightness =>
+      _platform.canChangeSystemBrightness;
 }
